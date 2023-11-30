@@ -1,0 +1,116 @@
+---
+title: "Why Julia?"
+author: "Ujjwal Panda"
+email: "ujjwalpanda97@gmail.com"
+github: https://github.com/astrogewgaw
+twitter: https://twitter.com/astrogewgaw
+subtitle: "Making the case for **Julia**."
+affiliation: "National Centre for Radio Astrophysics"
+
+execute:
+  freeze: auto
+
+format:
+  pdf:
+    toc: true
+    toc-depth: 2
+    toc-title: Contents
+
+    colorlinks: true
+    number-sections: false
+    documentclass: scrreprt
+    highlight-style: gruvbox
+
+    monofont: JuliaMono
+    sansfont: JetBrainsMono Nerd Font
+    mainfont: JetBrainsMono Nerd Font
+
+    include-in-header:
+      - text: |
+          \usepackage{geometry}
+          \usepackage{ragged2e}
+    template-partials:
+      - "./assets/tex/before-body.tex"
+
+geometry:
+  - top=0.5in
+  - left=.5in
+  - bottom=1.0in
+  - right=2.75in
+  - textwidth=4.5in
+  - marginparsep=.25in
+  - marginparwidth=2.25in
+
+citation-location: margin
+reference-location: margin
+csl: ./assets/tex/nature.csl
+bibliography: ./assets/tex/refs.bib
+
+filters:
+  - /home/upanda/.local/share/nvim/lazy/zotcite/python3/zotref.py
+---
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+\justifying
+
+# Introduction
+
+> In short, because we are greedy[^1].
+
+[^1]: From the post announcing the [**Julia**][julia] programming language to the world on the 14th of February, 2012, [**here**](https://julialang.org/blog/2012/02/why-we-created-julia/) (accessed on the 8th of June, 2023).
+
+## What's this?
+
+This is a proposal. This is a story. This is a rant. This is me trying to convince anyone who will listen that we should be using [**Julia**][julia] to develop software for astronomical applications, *especially* the data processing pipelines for all the upcoming big projects and telescopes (like the [**S**quare **K**ilometer **A**rray (**SKA**)][ska], the would-be largest radio telescope in the world). I first conceived the idea of writing something like this last year, when I finally became convinced that my thoughts actually made sense, and were maybe worthy of being written down to paper (or a PDF, which is the next best thing). In the end, this is my scream into the void, my message in the bottle; if my fellow astronomers can hear me, I hope they scream back.
+
+:::{.column-margin}
+![The official logo for **Julia**. Released on 14 February 2012, work on it started back in 2009, when Jeff Bezanson, Stefan Karpinski, Viral B. Shah, and Alan Edelman banded together to create a high-level, dynamic language that could be as fast as C, C++ or Fortran.](./assets/img/julia-logo-color.svg)
+:::
+
+This document lives on [**Github**][src]. If you think I have missed something, or gotten something wrong, or maybe you saw a typo in passing, feel free to open an issue [**here**][issues], or make a pull request! If you want to talk to me about any of this, feel free to send an [**email**][email], or hit me up on [**Twitter**][twitter].
+
+## Who's this for?
+
+My fellow astronomers, especially those who are working in the same field, and/or are routinely developing software for astronomical applications. To that end, I do assume some basic knowledge of astronomy, programming, and software development. However, I take care not to assume too much. Wherever necessary, I will take my time to explain certain concepts. Since this is directed to astronomers across the board, I will also spend some time introducing the field I work in. Feel free to skip parts of this document you have already familiar with. In the end, however, this is for me; it is a way to record my thoughts into something that is coherent and readable.
+
+## Who am I?
+
+Oh, I forgot to introduce myself! I am [**Ujjwal Panda**][me], working towards a Ph.D. at the [**N**ational **C**entre of **R**adio **A**strophysics (**NCRA**)][ncra]. My work focuses primarily on searching and studying **pulsars** and **F**ast **R**adio **B**ursts (**FRBs**) in the radio. I am a part of the [**N**ational **S**upercomputing **M**ission (**NSM**)][nsm]'s [**S**urvey for s**P**oradic radi**O** burs**T**s, via a commensa**L**, mult**I**beam, **G**PU-powered, **H**PC at the GMR**T** (**SPOTLIGHT**)][spotlight]; as the name indicates, it is a commensal survey for pulsars and FRBs via the [**G**iant **M**etrewave **R**adio **T**elescope (**GMRT**)][gmrt], with a dedicated high-performance, GPU-powered, cluster serving as the backend.
+
+:::{.column-margin}
+![The **GMRT**. It is an interferometer, consisting of 30 dishes, each 45 meters in diameter. There are 12 dishes in the central square, while the other 18 dishes are distributed into three *arms*, along the East, West, and South. The telescope is known for its wide frequency coverage, its imaging capabilities, and its state-of-the-art sensitivity, especially at lower frequencies. Image taken from the official GMRT site [**here**](http://www.gmrt.ncra.tifr.res.in/general/photo_gallery/photo.html).](./assets/img/gmrt.jpg)
+:::
+
+## A cosmic firework show.
+## The trap of (big) data.
+## Two languages, many problems.
+
+[julia]: julialang.org
+[nsm]: https://nsmindia.in
+[quarto]: https://quarto.org
+[me]: https://astrogewgaw.com
+[ska]: https://www.skao.int/en
+[python]: https://www.python.org
+[ncra]: http://www.ncra.tifr.res.in
+[spotlight]: nsmgmrt.ncra.tifr.res.in
+[tempo]: https://tempo.sourceforge.net
+[email]: mailto:ujjwalpanda97@gmail.com
+[gmrt]: http://www.gmrt.ncra.tifr.res.in
+[twitter]: https://twitter.com/astrogewgaw
+[sigproc]: https://sigproc.sourceforge.net
+[ffapipe]: https://github.com/GHRSS/ffapipe
+[psrchive]: https://psrchive.sourceforge.net
+[tempo2]: https://bitbucket.org/psrsoft/tempo2
+[presto]: https://github.com/scottransom/presto
+[issues]: https://github.com/astrogewgaw/txt/issues
+[ghrss]: http://www.ncra.tifr.res.in/~bhaswati/GHRSS.html
+[AA]: https://github.com/AstroAccelerateOrg/astro-accelerate
+[src]: https://github.com/astrogewgaw/txt/blob/main/whyjulia
+
+[xkcd:bad_code]: https://imgs.xkcd.com/comics/bad_code.png
+[xkcd:good_code]: https://imgs.xkcd.com/comics/good_code.png
+[xkcd:data_trap]: https://imgs.xkcd.com/comics/data_trap.png
+[xkcd:standards]: https://imgs.xkcd.com/comics/standards.png
+[xkcd:dependency]: https://imgs.xkcd.com/comics/dependency.png
+[xkcd:code_quality]: https://imgs.xkcd.com/comics/code_quality.png
